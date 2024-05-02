@@ -1,0 +1,127 @@
+/*Nav bar*/
+nav{
+  width: 100%;
+  margin: 0;
+}
+nav ul{
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+ul.topnav li{
+  list-style: none;
+  float: left;
+}
+ul.topnav li.topnav-right{
+  float: right;
+}
+ul.topnav li a{
+  display: block;
+  text-decoration: none;
+  min-height: 16px;
+  padding: 14px;
+  text-transform: uppercase ;
+  color: #666;
+}
+ul.topnav li a:hover{
+  background-color: #666;
+  color: white;
+}
+ul.topnav li.dropdownicon{
+  display: none;
+}
+/*Mobile*/
+@media screen and (max-width:680px){
+  ul.topnav li:not(:nth-child(1)){
+      display: none;
+  }
+  ul.topnav li.dropdownicon{
+      display: block;
+      float: right;
+  }
+  ul.topnav.responsive li.dropdownicon{
+      position: absolute;
+      top: 0;
+      right: 0;
+  }
+  ul.topnav.responsive{
+      position: relative;
+  }
+  ul.topnav.responsive li {
+      display: inline;
+      float: none;
+  }
+  ul.topnav.responsive li a{
+      display: block;
+      text-align: left;
+  }
+}
+
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #444444;
+  }
+  
+  .bg-steel {
+    background-color: #5f788a;
+  }
+  .content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  
+  .article-title {
+    color: #444444;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
