@@ -23,7 +23,7 @@ def logout():
 
 @app.route("/register")
 def register():
-    return "<p>Hello, World!</p>"
+    return render_template('register.html')
 
 @app.route("/profile")
 def profile():
