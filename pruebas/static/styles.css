@@ -1,59 +1,1106 @@
-/*Nav bar*/
-nav{
-  width: 100%;
-  margin: 0;
-}
-nav ul{
-  overflow: hidden;
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(90deg, #000000 30%, #1f3e49 60%, #00ff87 100%);
+  color: white;
   margin: 0;
   padding: 0;
 }
 
-ul.topnav li{
-  list-style: none;
-  float: left;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+
 }
-ul.topnav li.topnav-right{
-  float: right;
+
+header h1 {
+  font-size: 70px;
+  color: #00ffff;
 }
-ul.topnav li a{
-  display: block;
+
+.logo img {
+  width: 50px;
+}
+
+.welcome {
+  color: #adff2f;
+  background-color: #0d141f;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+nav {
+
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: #1a1a1a;
+  background-color: #00c8c8;
   text-decoration: none;
-  min-height: 16px;
-  padding: 14px;
-  text-transform: uppercase ;
-  color: #666;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.872);
 }
-ul.topnav li a:hover{
-  background-color: #666;
+
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+.carreras h2 {
+  background-color: #000;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(38, 255, 0, 0.872);
+}
+
+a {
+  text-decoration: none;
+  color: rgb(23, 23, 23);
+  font-size: 30px;
+  font-family: Arial, sans-serif;
+}
+
+a:hover {
+  color: yellow;
+
+}
+
+.profile-box {
+  margin: 30px auto;
+  background-color: rgba(0, 0, 0, 0.488);
+  border: 1px solid rgba(34, 0, 255, 0.316);
+  box-shadow: 0 0 10px rgba(38, 255, 0, 0.872);
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+
+.white {
+          background-color: rgba(255, 255, 255, 0.834);
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(38, 255, 0, 0.872);
+          text-align: center;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(90deg, #000000 30%, #1f3e49 60%, #00ff87 100%);
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    
+    }
+    
+    header h1 {
+        font-size: 2em;
+        color: #00ffff;
+    }
+    
+    .logo img {
+        width: 50px;
+    }
+    
+    .welcome {
+        color: #adff2f;
+        background-color: #0d141f;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-weight: bold;
+    }
+    
+    nav {
+    
+        padding: 10px 0;
+        text-align: center;
+    }
+    
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    nav ul li a {
+        color: #1a1a1a;
+        background-color: #00c8c8;
+        text-decoration: none;
+        padding: 10px 30px;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    
+    main {
+        padding: 40px;
+        text-align: center;
+    }
+    
+    .carreras h2 {
+        background-color: #000;
+        display: inline-block;
+        padding: 10px 30px;
+        border-radius: 20px;
+        color: white;
+        margin-bottom: 30px;
+    }
+    
+    .carrera {
+        display: flex;
+        justify-content: center;
+        gap: 100px;
+    }
+    
+    .card {
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+        background-color: #fff;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        padding: 15px;
+    }
+    
+    .card h3 {
+        color: #000;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+    }
+    
+    .card .icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .card-analisis {
+        background-color: #ffe4e1;
+        border: 2px solid #ff1493;
+    }
+    
+    .card-diseno {
+        background-color: #e0ffe0;
+        border: 2px solid #00ff7f;
+    }
+    
+/* Reset General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom right, #001a12, #2eea87);
   color: white;
+  text-align: center;
 }
-ul.topnav li.dropdownicon{
-  display: none;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
 }
-/*Mobile*/
-@media screen and (max-width:680px){
-  ul.topnav li:not(:nth-child(1)){
-      display: none;
-  }
-  ul.topnav li.dropdownicon{
-      display: block;
-      float: right;
-  }
-  ul.topnav.responsive li.dropdownicon{
-      position: absolute;
-      top: 0;
-      right: 0;
-  }
-  ul.topnav.responsive{
-      position: relative;
-  }
-  ul.topnav.responsive li {
-      display: inline;
-      float: none;
-  }
-  ul.topnav.responsive li a{
-      display: block;
-      text-align: left;
-  }
+
+.logo img {
+  width: 50px;
+  height: auto;
 }
+
+.logo a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+  margin-left: -20px;
+}
+
+.welcome p {
+  background-color: #000;
+  color: #ffe733;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+nav {
+  background-color: transparent;
+  margin: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: black;
+  font-size: 1.2rem;
+  text-decoration: none;
+  background-color: #8ef0e8;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.content {
+  width: 60%;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.content h2 {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.5rem;
+}
+
+.content p {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom right, #001a12, #2eea87);
+  color: white;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+}
+
+.logo a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+  margin-left: -20px;
+}
+
+.welcome p {
+  background-color: #000;
+  color: #ffe733;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+nav {
+  background-color: transparent;
+  margin: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: black;
+  font-size: 1.2rem;
+  text-decoration: none;
+  background-color: #8ef0e8;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.content {
+  width: 60%;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.content h2 {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.form-group label {
+  font-weight: bold;
+  width: 20%;
+}
+
+.form-group input, .form-group textarea {
+  width: 75%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #001a12;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #003324;
+}
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(90deg, #000000 30%, #1f3e49 60%, #00ff87 100%);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  
+}
+
+header h1 {
+  font-size: 2em;
+  color: #ffffff;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.welcome {
+  color: #adff2f;
+  background-color: #0d141f;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+nav {
+
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: #1a1a1a;
+  background-color: #00c8c8;
+  text-decoration: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+.carreras h2 {
+  background-color: #000;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+
+.card {
+  width: 200px;
+  border-radius: 20px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  padding: 15px;
+}
+
+.card h3 {
+  color: #000;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.card-analisis {
+  background-color: #ffe4e1;
+  border: 2px solid #ff1493;
+}
+
+.card-diseno {
+  background-color: #b7e9c0;
+  border: 2px solid #80ff00;
+}
+
+.checklist {
+          list-style-type: none;
+      }
+
+      .checklist li {
+          background: #fff;
+          padding: 10px;
+      }
+      .checklist label {
+          color: #000000; /* Cambia el color aquí */
+          font-size: 31px;
+      }
+
+   
+/* Estilos generales del body */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(90deg, #000000 30%, #1f3e49 60%, #00ff87 100%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Contenedor del header */
+header {
+  width: 100%;
+  padding: 20px;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Contenedor del logo y título */
+.logo-title-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo del logo */
+.logo img {
+  width: 90px;
+  
+}
+
+/* Estilo del título "JIM VIRTUAL" */
+.jim-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 46px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  padding: 30px 130px;
+}
+
+/* Estilos de navegación */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+nav .contacto a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+/* Estilos del formulario */
+.form-container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 70px;
+  width: 350px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin-left: 45%;
+}
+
+.form-register h2 {
+  color: #050091;
+  font-size: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Estilos de los inputs y botones */
+.controls, .botons {
+  width: 90%;
+  padding: 15px 20px; /* Ajustamos padding para agregar sangría */
+  margin-bottom: 45px;
+  border: none;
+  border-radius: 30px;
+  background-color: #f2f2f2;
+  font-size: 16px;
+  text-align: left; /* Alineamos el texto a la izquierda */
+  color: #999999; /* Color del placeholder similar a la imagen */
+}
+
+.controls::placeholder {
+  color: #999999; /* Color del placeholder */
+}
+
+/* Estilo específico para el botón de iniciar sesión */
+.botons {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(90deg, #000000 0%, #00008b 50%, #0000ff 100%);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.botons:hover {
+  background: linear-gradient(90deg, #4c8b00 0%, #188000 50%, #000000 100%);
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+  color: #1f3e49;
+}
+
+p a {
+  color: #0000ff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+   
+/* Estilos generales del body */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(90deg, #000000 30%, #1f3e49 60%, #00ff87 100%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Contenedor del header */
+header {
+  width: 100%;
+  padding: 20px;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Contenedor del logo y título */
+.logo-title-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo del logo */
+.logo img {
+  width: 90px;
+  
+}
+
+/* Estilo del título "JIM VIRTUAL" */
+.jim-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 46px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  padding: 30px 130px;
+}
+
+/* Estilos de navegación */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+nav .contacto a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+/* Estilos del formulario */
+.form-container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 70px;
+  width: 350px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin-left: 45%;
+}
+
+/* Estilos de los inputs y botones */
+.controls, .botons {
+  width: 90%;
+  padding: 15px 20px; /* Ajustamos padding para agregar sangría */
+  margin-bottom: 45px;
+  border: none;
+  border-radius: 30px;
+  background-color: #f2f2f2;
+  font-size: 16px;
+  text-align: left; /* Alineamos el texto a la izquierda */
+  color: #999999; /* Color del placeholder similar a la imagen */
+}
+
+.controls::placeholder {
+  color: #999999; /* Color del placeholder */
+}
+
+/* Estilo específico para el botón de iniciar sesión */
+.botons {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(90deg, #000000 0%, #00008b 50%, #0000ff 100%);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.botons:hover {
+  background: linear-gradient(90deg, #4c8b00 0%, #188000 50%, #000000 100%);
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+  color: #2d4b8b;
+}
+
+p a {
+  color: #3700ff46;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(90deg, #000000 30%, #1f3e49 60%, #00ff87 100%);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+
+}
+
+header h1 {
+  font-size: 2em;
+  color: #00ffff;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.welcome {
+  color: #adff2f;
+  background-color: #0d141f;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+nav {
+
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: #1a1a1a;
+  background-color: #00c8c8;
+  text-decoration: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+.carreras h2 {
+  background-color: #000;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+
+.carrera {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  padding: 15px;
+}
+
+.card h3 {
+  color: #000;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.card .icon {
+  width: 50px;
+  height: 50px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-analisis {
+  background-color: #ffe4e1;
+  border: 2px solid #ff1493;
+}
+
+.card-diseno {
+  background-color: #e0ffe0;
+  border: 2px solid #00ff7f;
+}
+
+.checklist {
+          list-style-type: none;
+          padding: 0;
+      }
+
+      .checklist li {
+          background: #fff;
+          margin-bottom: 10px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          display: flex;
+          align-items: center;
+      }
+
+      .checklist input[type="checkbox"] {
+          margin-right: 10px;
+      }
+
+      .checklist label {
+          color: #000000; /* Cambia el color aquí */
+          font-size: 31px;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(90deg, #000000 30%, #1f3e49 60%, #00ff87 100%);
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        
+    }
+    
+    header h1 {
+        font-size: 70px;
+        color: #00ffff;
+    }
+    
+    .logo img {
+        width: 50px;
+    }
+    
+    .welcome {
+        color: #adff2f;
+        background-color: #0d141f;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-weight: bold;
+    }
+    
+    nav {
+      
+        padding: 10px 0;
+        text-align: center;
+    }
+    
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    nav ul li a {
+        color: #1a1a1a;
+        background-color: #00c8c8;
+        text-decoration: none;
+        padding: 10px 30px;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.872);
+    }
+    
+    main {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .carreras h2 {
+        background-color: #000;
+        display: inline-block;
+        padding: 10px 30px;
+        border-radius: 20px;
+        color: rgb(255, 255, 255);
+        margin-bottom: 30px;
+        box-shadow: 0 0 10px rgba(38, 255, 0, 0.872);
+    }
+    
+    a {
+        text-decoration: none; 
+        color: rgb(23, 23, 23); 
+        font-size: 30px;
+        font-family: Arial, sans-serif;
+    }
+    
+    a:hover {
+        color: yellow;
+        
+    }
+    
+    .profile-box {
+        margin: 30px auto;
+        background-color: rgba(0, 0, 0, 0.488);
+        border: 1px solid rgba(34, 0, 255, 0.316);
+        box-shadow: 0 0 10px rgba(38, 255, 0, 0.872);
+        padding: 30px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+    
+    
+    .white {
+                background-color: rgba(255, 255, 255, 0.834);
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(38, 255, 0, 0.872);
+                text-align: center;
+            }
+    
+    .side-menu {
+        width: 20%;
+        background-color: white;
+        color: black;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    
+    .menu-title {
+        font-size: 1.2rem;
+    }
+    
+    .content {
+        width: 60%;
+    }
+    
+    .content h2 {
+        background-color: black;
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 20px;
+    }
+    
+    .buttons {
+        margin-top: 20px;
+    }
+    
+    .buttons button {
+        background-color: #8ef0e8;
+        border: none;
+        padding: 15px 30px;
+        margin: 10px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    
+    .buttons button:hover {
+        background-color: #16c79a;
+    }
+    
