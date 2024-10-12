@@ -1,8 +1,9 @@
 
 # A very simple Flask Hello World app for you to get started with...
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for,flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.exc import IntegrityError
 import os
 
 app = Flask(__name__)
@@ -27,10 +28,15 @@ app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
+if __name__=="__main__":
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
 
 class User(db.Model):
         __tablename__ ="usuario"
-        mail = db.Column(db.String(255),primary_key=True)
+        id = db.Column(db.Integer, primary_key=True,autoincrement=True)
+        mail = db.Column(db.String(255),unique=True)
         nombre = db.Column(db.String(255))
         apellido = db.Column(db.String(255))
         rol=db.Column(db.String(255))
@@ -105,19 +111,31 @@ def tramites():
 
 @app.route('/homeInscribirse',methods=['GET', 'POST'])
 def homeInscribirse():
-    return render_template('homeInscribirse.html')
+    
     if request.method == "POST":
-        return render_template("homeInscribirse.html", usuario=User.query.all())
-
-    # Assuming your User model has fields `nombres`, `correo`, and `contraseña`
-    user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],apellido="",rol="al")
-    print(request.form["nombres"])
-    print(request.form["correo"])
-    print(request.form["contraseña"])
-    # Add the new user to the session and commit to the database
-    db.session.add(user)
-    db.session.commit()
-    return render_template('homeInscribirse.html')
+        try:
+            user = User(nombre=request.form["nombres"], mail=request.form["correo"], 
+                        contrasena=request.form["contraseña"],apellido="",rol="al")
+            print(request.form["nombres"])
+            print(request.form["correo"])
+            print(request.form["contraseña"])
+            # Add the new user to the session and commit to the database
+            db.session.add(user)
+            db.session.commit()
+            flash(f"usuario guardado")
+        except IntegrityError as e:
+            #esto asugura que la sesión no tenga inconvenientes luego
+            db.session.rollback()
+            if 'Duplicate entry' in str(e.orig):
+                flash(f"Mail duplicado")
+            #en caso de que error no cumpla con la duplicación 
+            else:
+                flash(f"Error al guardar el usuario en la base de datos")
+        return render_template("homeInscribirse.html")
+    else:
+        return render_template('homeInscribirse.html')
+    
+    
 
 @app.route('/homeIngresar',methods=['GET', 'POST'])
 def homeIngresar():

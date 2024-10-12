@@ -18,13 +18,21 @@
     </header>
     <main>
         <div class="form-container">
-            <form class="form-register">
+            <form action="{{ url_for('homeInscribirse') }}" class="form-register" method="post">
                 <h2>Crear una cuenta <br> Nueva</h2>
                 <input class="controls" type="text" name="nombres" placeholder="NOMBRE">
                 <input class="controls" type="email" name="correo" placeholder="EMAIL">
                 <input class="controls" type="password" name="contraseña" placeholder="CONTRASEÑA">
                 <input class="botons" type="submit" value="INSCRIBIRSE">
                 <p>¿Ya registrado? <a href="/homeIngresar">Acceder</a></p>
+                {% with messages = get_flashed_messages()%}
+                    {% if messages %}
+                        <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li class="flash-message">{{message}}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
             </form>
         </div>
     </main>
