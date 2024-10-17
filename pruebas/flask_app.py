@@ -18,30 +18,43 @@ SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostnam
     hostname="IvanGarcia56484651.mysql.pythonanywhere-services.com",
     databasename="IvanGarcia564846$JIL",
 )"""
+"""
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username="root",
     password="JILTUB69",
     hostname="127.0.0.1:3306",
     databasename="JIL",
 )
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
 if __name__=="__main__":
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+"""
+SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://root:JILTUB69@127.0.0.1:3306/JIL"
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+class Base(DeclarativeBase):
+  pass
+
+db = SQLAlchemy(app, model_class=Base)
+#apellido = db.Column(db.String)
 class User(db.Model):
         __tablename__ ="usuario"
-        id = db.Column(db.Integer, primary_key=True,autoincrement=True)
-        mail = db.Column(db.String(255),unique=True)
-        nombre = db.Column(db.String(255))
-        apellido = db.Column(db.String(255))
-        rol=db.Column(db.String(255))
-        contrasena=db.Column(db.String(255))
-
+        id : Mapped[int] = mapped_column(db.Integer, primary_key=True,autoincrement=True)
+        mail : Mapped[str] = mapped_column(db.String,unique=True)
+        nombre : Mapped[str] = mapped_column(db.String)
+        rol : Mapped[str] = mapped_column(db.String)
+        contrasena : Mapped[str] = mapped_column(db.String)
+if __name__=="__main__":
+    with app.app_context():
+        db.create_all()
+        #db.session.add(User(mail="example"))
+        db.session.commit()
+        users = db.session.execute(db.select(User)).scalars()
+    app.run(debug=True)
+    
 @app.route('/')
 def index():
     return render_template('home.html')
@@ -114,8 +127,8 @@ def homeInscribirse():
     
     if request.method == "POST":
         try:
-            user = User(nombre=request.form["nombres"], mail=request.form["correo"], 
-                        contrasena=request.form["contraseña"],apellido="",rol="al")
+            #user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],apellido="",rol="al")
+            user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],rol="al")
             print(request.form["nombres"])
             print(request.form["correo"])
             print(request.form["contraseña"])
