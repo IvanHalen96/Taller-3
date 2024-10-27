@@ -12,25 +12,28 @@ picFolder= os.path.join("static","pics")
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config["DEBUG"] = True
 """
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
     username="IvanGarcia564846",
     password="-)WA4UhsiNRL_zv",
     hostname="IvanGarcia56484651.mysql.pythonanywhere-services.com",
     databasename="IvanGarcia564846$JIL",
 )"""
-"""
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="root",
-    password="JILTUB69",
-    hostname="127.0.0.1:3306",
-    databasename="JIL",
-)
+
+
 if __name__=="__main__":
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-"""
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://root:JILTUB69@127.0.0.1:3306/JIL"
+
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
+    username="root",
+    password="JILTUB69",
+    hostname="127.0.0.1:3306",
+    databasename="JIL",
+    charset = 'utf8mb4',
+    collation = 'utf8mb4_unicode_ci',
+)
+#SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://root:JILTUB69@127.0.0.1:3306/JIL"
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
