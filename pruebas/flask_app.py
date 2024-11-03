@@ -2,8 +2,8 @@
 # A very simple Flask Hello World app for you to get started with...
 from flask import Flask, redirect, render_template, request, url_for,flash
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, scoped_session, sessionmaker
+from sqlalchemy.exc import IntegrityError, create_engine, exc
 import os
 
 app = Flask(__name__)
@@ -18,12 +18,6 @@ SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{dat
     hostname="IvanGarcia56484651.mysql.pythonanywhere-services.com",
     databasename="IvanGarcia564846$JIL",
 )"""
-
-
-if __name__=="__main__":
-    with app.app_context():
-        db.create_all()
-    app.run(debug=True)
 
 SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
     username="root",
@@ -57,7 +51,12 @@ if __name__=="__main__":
         db.session.commit()
         users = db.session.execute(db.select(User)).scalars()
     app.run(debug=True)
-    
+
+if __name__=="__main__":
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
+
 @app.route('/')
 def index():
     return render_template('home.html')
@@ -131,14 +130,23 @@ def homeInscribirse():
     if request.method == "POST":
         try:
             #user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],apellido="",rol="al")
-            user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],rol="al")
-            print(request.form["nombres"])
-            print(request.form["correo"])
-            print(request.form["contraseña"])
-            # Add the new user to the session and commit to the database
-            db.session.add(user)
-            db.session.commit()
-            flash(f"usuario guardado")
+            nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"]
+            if mail=="":
+                flash(f"falta mail")
+            if nombre=="":
+                flash(f"falta nombre")
+            if contrasena=="":
+                flash(f"falta contrasena")
+            if not contrasena and not nombre and not mail:
+                user = User(nombre, mail, contrasena,rol="al")
+                print(request.form["nombres"])
+                print(request.form["correo"])
+                print(request.form["contraseña"])
+                # Add the new user to the session and commit to the database
+                db.session.add(user)
+                db.session.commit()
+                flash(f"usuario guardado")
+            
         except IntegrityError as e:
             #esto asugura que la sesión no tenga inconvenientes luego
             db.session.rollback()
@@ -155,6 +163,28 @@ def homeInscribirse():
 
 @app.route('/homeIngresar',methods=['GET', 'POST'])
 def homeIngresar():
+    if request.method == "POST":
+        try:
+            #user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],apellido="",rol="al")
+            nombre=request.form["nombres"], contrasena=request.form["contraseña"]
+            user = User.query.filter_by(mail=request.form["correo"]).first()
+            if user:
+                print(user.nombre)
+            else:
+                print("Usuario no encontrado")
+            db.session.commit()
+            
+        except IntegrityError as e:
+            #esto asugura que la sesión no tenga inconvenientes luego
+            db.session.rollback()
+            if 'Duplicate entry' in str(e.orig):
+                flash(f"Mail duplicado")
+            #en caso de que error no cumpla con la duplicación 
+            else:
+                flash(f"Error al guardar el usuario en la base de datos")
+        return render_template("homeIngresar.html")
+    else:
+        return render_template('homeIngresar.html')
     return render_template('homeIngresar.html')
 
 
