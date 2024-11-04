@@ -72,7 +72,7 @@ def homeInscribirse():
             #user = User(nombre=request.form["nombre"], mail=request.form["correo"], contrasena=request.form["contrasena"],apellido="",rol="al")
             if (not request.form["contrasena"]=="") and (not request.form["nombre"]=="") and (not request.form["correo"]==""):
                 user = User(mail=request.form["correo"], nombre=request.form["nombre"],rol="AL", contrasena=request.form["contrasena"])
-                flash(request.form["nombre"] + request.form["correo"] + request.form["contrasena"])
+                #flash(request.form["nombre"] + request.form["correo"] + request.form["contrasena"])
                 # Add the new user to the session and commit to the database
                 db.session.add(user)
                 db.session.commit()
