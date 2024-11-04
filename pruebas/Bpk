@@ -1,0 +1,39 @@
+"""
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
+    username="IvanGarcia564846",
+    password="-)WA4UhsiNRL_zv",
+    hostname="IvanGarcia56484651.mysql.pythonanywhere-services.com",
+    databasename="IvanGarcia564846$JIL",
+)"""
+
+"""if request.method == "POST":
+        try:
+            #user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],apellido="",rol="al")
+            nombre=request.form["nombres"], contrasena=request.form["contraseña"]
+            user = User.query.filter_by(mail=request.form["correo"]).first()
+            if user:
+                print(user.nombre)
+            else:
+                print("Usuario no encontrado")
+            db.session.commit()
+            
+        except IntegrityError as e:
+            #esto asugura que la sesión no tenga inconvenientes luego
+            db.session.rollback()
+            if 'Duplicate entry' in str(e.orig):
+                flash(f"Mail duplicado")
+            #en caso de que error no cumpla con la duplicación 
+            else:
+                flash(f"Error al guardar el usuario en la base de datos")
+        return render_template("homeIngresar.html")
+    else:
+        return render_template('homeIngresar.html')
+    return render_template('homeIngresar.html')
+if __name__=="__main__":
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)    
+    
+    
+    
+"""

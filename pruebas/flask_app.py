@@ -1,9 +1,9 @@
-
 # A very simple Flask Hello World app for you to get started with...
 from flask import Flask, redirect, render_template, request, url_for,flash
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine, exc
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, scoped_session, sessionmaker
-from sqlalchemy.exc import IntegrityError, create_engine, exc
+from sqlalchemy.exc import IntegrityError
 import os
 
 app = Flask(__name__)
@@ -11,13 +11,6 @@ comments = []
 picFolder= os.path.join("static","pics")
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config["DEBUG"] = True
-"""
-SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
-    username="IvanGarcia564846",
-    password="-)WA4UhsiNRL_zv",
-    hostname="IvanGarcia56484651.mysql.pythonanywhere-services.com",
-    databasename="IvanGarcia564846$JIL",
-)"""
 
 SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
     username="root",
@@ -31,6 +24,10 @@ SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{dat
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+engine = create_engine('mysql+pymysql://root:JILTUB69@127.0.0.1:3306/JIL')
+Session = scoped_session(sessionmaker(bind=engine))
+session = Session()
 
 class Base(DeclarativeBase):
   pass
@@ -68,84 +65,20 @@ def main_page():
     comments.append(request.form["contents"])
     return redirect(url_for('index'))
 
-@app.route('/admin')
-def admin():
-    return render_template('admin.html')
-@app.route('/admin2')
-def admin2():
-    request=User.query.all()
-    print(request)
-    return render_template('admin.html')
-@app.route('/carrera')
-def carrera():
-    return render_template('carrera.html')
-@app.route('/contenidos')
-def contenidos():
-    return render_template('contenidos.html')
-@app.route('/cursosymaterias')
-def cursosymaterias():
-    return render_template('cursosymaterias.html')
-@app.route('/inicio')
-def inicio():
-    return render_template('inicio.html')
-@app.route('/layout')
-def layout():
-    return render_template('layout.html')
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-@app.route('/aulaAnalisis')
-def aulaAnalisis():
-    return render_template('aulaAnalisis.html')
-@app.route('/aulaVirtualCarreras')
-def aulaVirtualCarreras():
-    return render_template('aulaVirtualCarreras.html')
-@app.route('/boletin')
-def boletin():
-    return render_template('boletin.html')
-@app.route('/contacto')
-def contacto():
-    return render_template('contacto.html')
-@app.route('/homeAlumno')
-def homeAlumno():
-    return render_template('homeAlumno.html')
-@app.route('/infoAnalisis')
-def infoAnalisis():
-    return render_template('infoAnalisis.html')
-@app.route('/inscripciones')
-def inscripciones():
-    return render_template('inscripciones.html')
-@app.route('/inscripcionesMaterias')
-def inscripcionesMaterias():
-    return render_template('inscripcionesMaterias.html')
-@app.route('/tramites')
-def tramites():
-    return render_template('tramites.html')
-
-
 @app.route('/homeInscribirse',methods=['GET', 'POST'])
 def homeInscribirse():
-    
     if request.method == "POST":
         try:
-            #user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],apellido="",rol="al")
-            nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"]
-            if mail=="":
-                flash(f"falta mail")
-            if nombre=="":
-                flash(f"falta nombre")
-            if contrasena=="":
-                flash(f"falta contrasena")
-            if not contrasena and not nombre and not mail:
-                user = User(nombre, mail, contrasena,rol="al")
-                print(request.form["nombres"])
-                print(request.form["correo"])
-                print(request.form["contraseña"])
+            #user = User(nombre=request.form["nombre"], mail=request.form["correo"], contrasena=request.form["contrasena"],apellido="",rol="al")
+            if (not request.form["contrasena"]=="") and (not request.form["nombre"]=="") and (not request.form["correo"]==""):
+                user = User(mail=request.form["correo"], nombre=request.form["nombre"],rol="AL", contrasena=request.form["contrasena"])
+                flash(request.form["nombre"] + request.form["correo"] + request.form["contrasena"])
                 # Add the new user to the session and commit to the database
                 db.session.add(user)
                 db.session.commit()
                 flash(f"usuario guardado")
+            else:
+                flash("¡¡¡¡FALTAN DATOS!!!!")
             
         except IntegrityError as e:
             #esto asugura que la sesión no tenga inconvenientes luego
@@ -159,34 +92,23 @@ def homeInscribirse():
     else:
         return render_template('homeInscribirse.html')
     
-    
 
 @app.route('/homeIngresar',methods=['GET', 'POST'])
 def homeIngresar():
-    if request.method == "POST":
-        try:
-            #user = User(nombre=request.form["nombres"], mail=request.form["correo"], contrasena=request.form["contraseña"],apellido="",rol="al")
-            nombre=request.form["nombres"], contrasena=request.form["contraseña"]
-            user = User.query.filter_by(mail=request.form["correo"]).first()
-            if user:
-                print(user.nombre)
-            else:
-                print("Usuario no encontrado")
-            db.session.commit()
-            
-        except IntegrityError as e:
-            #esto asugura que la sesión no tenga inconvenientes luego
-            db.session.rollback()
-            if 'Duplicate entry' in str(e.orig):
-                flash(f"Mail duplicado")
-            #en caso de que error no cumpla con la duplicación 
-            else:
-                flash(f"Error al guardar el usuario en la base de datos")
-        return render_template("homeIngresar.html")
-    else:
-        return render_template('homeIngresar.html')
-    return render_template('homeIngresar.html')
-
+    try:    
+        # Bloquear el registro para su actualización
+        if request.method == "POST":
+                user = session.query(User).with_for_update().filter_by(mail=request.form["correo"], contrasena=request.form["contrasena"]).first()
+        if user:
+                flash("Bloqueado")
+                session.commit()
+    except exc.SQLAlchemyError as e:
+        session.rollback()
+        flash(f"Error: {e}")
+    finally:
+        session.close()
+    
+   
 
 
 @app.route('/logout')
