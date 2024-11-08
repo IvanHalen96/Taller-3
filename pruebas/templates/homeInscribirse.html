@@ -8,6 +8,122 @@
     <link rel="stylesheet" href="/static/styles.css">
 
 </head>
+<style>
+    /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(90deg, #000000 30%, #1f3e49 60%, #00ff87 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        
+        /* Estilos del header y el navbar */
+        header {
+            width: 90%;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        
+        nav .logo img {
+            width: 90px;
+        }
+        
+        nav .contacto a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        
+        /* Estilos del formulario */
+        .form-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px 70px;
+            width: 350px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            margin-left: 35%;
+        }
+        
+        .form-register h2 {
+            color: #050091;
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .controls {
+            width: 90%;
+            padding: 15px 20px; /* Ajustamos padding para agregar sangría */
+            margin-bottom: 45px;
+            border: none;
+            border-radius: 30px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+            text-align: left; /* Alineamos el texto a la izquierda */
+            color: #999999; /* Color del placeholder similar a la imagen */
+        }
+        
+        .controls::placeholder {
+            color: #999999; /* Placeholder en gris claro */
+        }
+        
+        .botons {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #000000 0%, #00008b 50%, #0000ff 100%);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .botons:hover {
+            background: linear-gradient(90deg, #4c8b00 0%, #188000 50%, #000000 100%);
+        }
+        
+        p {
+            text-align: center;
+            margin-top: 20px;
+            color: #1f3e49;
+        }
+        
+        p a {
+            color: #0000ff;
+            text-decoration: none;
+        }
+        
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    
 <body>
     <header>
         <nav>
