@@ -27,7 +27,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 engine = create_engine('mysql+pymysql://root:JILTUB69@127.0.0.1:3306/JIL')
 Session = scoped_session(sessionmaker(bind=engine))
-session = Session()
+
 
 class Base(DeclarativeBase):
   pass
@@ -95,19 +95,77 @@ def homeInscribirse():
 
 @app.route('/homeIngresar',methods=['GET', 'POST'])
 def homeIngresar():
-    try:    
-        # Bloquear el registro para su actualización
-        if request.method == "POST":
-                user = session.query(User).with_for_update().filter_by(mail=request.form["correo"], contrasena=request.form["contrasena"]).first()
-        if user:
-                flash("Bloqueado")
-                session.commit()
-    except exc.SQLAlchemyError as e:
-        session.rollback()
-        flash(f"Error: {e}")
-    finally:
-        session.close()
+    session = Session()
+    if request.method == "POST":
+        try:    
+            # Bloquear el registro para su actualización
+            if request.method == "POST":
+                    user = session.query(User).with_for_update().filter_by(mail=request.form["correo"], contrasena=request.form["contrasena"]).first()
+            # Verifica si el usuario existe
+            if user:
+                # Usuario encontrado, redirige a la página deseada
+                flash("Inicio de sesión exitoso")
+                return redirect(url_for('aulaVirtualCarreras'))
+            else:
+                # Usuario no encontrado, muestra un mensaje de error
+                flash("Correo o contraseña incorrectos")
+                return redirect(url_for('homeIngresar'))
+            
+        except exc.SQLAlchemyError as e:
+            session.rollback()
+            flash(f"Error: {e}")
+        finally:
+            session.close()
+    else:
+        return render_template('homeIngresar.html')
     
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
+@app.route('/contenidos')
+def contenidos():
+    return render_template('contenidos.html')
+@app.route('/cursosymaterias')
+def cursosymaterias():
+    return render_template('cursosymaterias.html')
+@app.route('/inicio')
+def inicio():
+    return render_template('inicio.html')
+@app.route('/layout')
+def layout():
+    return render_template('layout.html')
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/aulaAnalisis')
+def aulaAnalisis():
+    return render_template('aulaAnalisis.html')
+@app.route('/aulaVirtualCarreras')
+def aulaVirtualCarreras():
+    return render_template('aulaVirtualCarreras.html')
+@app.route('/boletin')
+def boletin():
+    return render_template('boletin.html')
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+@app.route('/homeAlumno')
+def homeAlumno():
+    return render_template('homeAlumno.html')
+@app.route('/infoAnalisis')
+def infoAnalisis():
+    return render_template('infoAnalisis.html')
+@app.route('/inscripciones')
+def inscripciones():
+    return render_template('inscripciones.html')
+@app.route('/inscripcionesMaterias')
+def inscripcionesMaterias():
+    return render_template('inscripcionesMaterias.html')
+@app.route('/tramites')
+def tramites():
+    return render_template('tramites.html')    
    
 
 

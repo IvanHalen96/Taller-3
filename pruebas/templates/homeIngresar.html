@@ -26,11 +26,20 @@
 
     <!-- Contenedor del formulario -->
     <div class="form-container">
-        <form class="form-register">
+        <form action="{{ url_for('homeIngresar') }}" class="form-register" method="post">
             <h2>INICIAR SESIÓN</h2>
             <input class="controls" type="email" name="correo" id="correo" placeholder="EMAIL">
-            <input class="controls" type="password" name="password" id="password" placeholder="CONTRASEÑA">
+            <input class="controls" type="password" name="contrasena" id="contrasena" placeholder="CONTRASEÑA">
             <input class="botons" type="submit" value="INICIAR SESIÓN">
+            {% with messages = get_flashed_messages()%}
+                {% if messages %}
+                    <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li class="flash-message">{{message}}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
         </form>
     </div>
 
