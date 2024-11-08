@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIM VIRTUAL - Contacto</title>
+    <link rel="stylesheet" href="styles.css">
+
+<style>
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom right, #001a12, #2eea87);
+    color: white;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    margin-left: -20px;
+}
+
+.welcome p {
+    background-color: #000;
+    color: #ffe733;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+nav {
+    background-color: transparent;
+    margin: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: black;
+    font-size: 1.2rem;
+    text-decoration: none;
+    background-color: #8ef0e8;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.content {
+    width: 60%;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.content h2 {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.form-group label {
+    font-weight: bold;
+    width: 20%;
+}
+
+.form-group input, .form-group textarea {
+    width: 75%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #001a12;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #003324;
+}
+
+
+</style>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <a href="#">Home</a>
+        </div>
+        <h1>JIM VIRTUAL</h1>
+        <div class="welcome">
+            <p>BIENVENIDA: JOHANNA FERNÁNDEZ</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">INSCRIPCIONES</a></li>
+            <li><a href="#">AULA VIRTUAL</a></li>
+            <li><a href="#">TRÁMITES</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="content">
+            <h2>CONTACTO</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="nombre">NOMBRE:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">APELLIDO:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">EMAIL:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">TELÉFONO:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">MENSAJE:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit">ENVIAR</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
